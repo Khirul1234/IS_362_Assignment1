@@ -84,7 +84,7 @@ SELECT planes.manufacturer,SUM(distance) AS 'Total Dist'FROM flights LEFT OUTER 
 	choosing that joins information from at least three of
 	the tables in the flights database. 
     
-/*
+*/
  -- combine information from flights and planes table and weather table.  
  
  select * from flights inner join planes ON flights.year = planes.year;
