@@ -2,15 +2,15 @@ use flights;
 
 /*     Khirul Rof
 	
-IS 362 Week 1 Assignment: SQL and Tableau
+IS 362 Week 1 Assignment
 
 */
     
-/* 	Question 1: How many airplanes have listed speeds? What is the minimum listed speed and the maximum listed speed?
+/* Question 1: How many airplanes have listed speeds? What is the minimum listed speed and the maximum listed speed?
     
    
 	
-    SQL statements and answers below.	*/
+SQL statements and answers below.	*/
 
 -- 	Airplanes with listed speeds: 23
 
@@ -39,11 +39,11 @@ SELECT SUM(distance) AS 'Total Distance'FROM flights WHERE ( year = 2013 AND mon
 
 SELECT SUM(distance) AS 'Total NULL Distance' FROM flights WHERE ( year = 2013 AND month = 1 AND tailnum IS NULL);
 
-/*	Question 3: What is the total distance flown for all planes on July 5, 2013 grouped by aircraft manufacturer? Write this statement first using an INNER JOIN, then using a LEFT OUTER JOIN. How do your results compare?
+/*	
+
+Question 3: What is the total distance flown for all planes on July 5, 2013 grouped by aircraft manufacturer? Write this statement first using an INNER JOIN, then using a LEFT OUTER JOIN. How do your results compare?
     
-	Answers:       
-	Total distance flown for all planes on July 5, 2013 grouped 
-    by aircraft manufacturer:
+Answers: Total distance flown for all planes on July 5, 2013 grouped by aircraft manufacturer:
 			
             manufacturer				Total Dist
 			------------------------------	----------
@@ -62,13 +62,12 @@ SELECT SUM(distance) AS 'Total NULL Distance' FROM flights WHERE ( year = 2013 A
 			MCDONNELL DOUGLAS AIRCRAFT CO	15690
 			MCDONNELL DOUGLAS CORPORATION	4767
     
-    Compare using an INNER JOIN, and a LEFT OUTER JOIN: 
+Compare using an INNER JOIN, and a LEFT OUTER JOIN: 
 
-      The inner join is probalemtic due to to having values thart don't match since they are null.
+The inner join is probalemtic due to to having values thart don't match since they are null.
     
 	
-        
-	SQL statements used to determine the data.	*/
+SQL statements used to determine the data.	*/
 
 -- inner join:
     
@@ -79,15 +78,14 @@ SELECT planes.manufacturer, SUM(distance) AS 'Total Dist' FROM flights INNER JOI
 SELECT planes.manufacturer,SUM(distance) AS 'Total Dist'FROM flights LEFT OUTER JOIN planes ON flights.tailnum = planes.tailnum WHERE (flights.year = 2013 AND flights.month = 7 AND flights.day = 5)GROUP BY manufacturer;
 
 
-/*	Question 4:
-    Write and answer at least one question of your own
-	choosing that joins information from at least three of
-	the tables in the flights database. 
+/*	
+
+Question 4: Write and answer at least one question of your ownchoosing that joins information from at least three ofhe tables in the flights database. 
     
 */
  -- combine information from flights and planes table and weather table.  
  
- select * from flights inner join planes ON flights.year = planes.year;
+ SELECT * FROM flights inner JOIN planes ON flights.year = planes.year;
 
  
  
